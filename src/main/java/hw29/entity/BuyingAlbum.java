@@ -2,8 +2,11 @@ package hw29.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "buying_album")
@@ -13,11 +16,12 @@ public class BuyingAlbum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "album_id")
-    private Album album;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ToString.Exclude
+    @Column(name = "list")
+    private List<Album> albums = new ArrayList<>();
 
-    public BuyingAlbum(Album album) {
-        this.album = album;
+    public BuyingAlbum(List<Album> albums) {
+        this.albums = albums;
     }
 }

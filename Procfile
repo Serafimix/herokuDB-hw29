@@ -1,1 +1,1 @@
-bash: java -jar target/heroku-hw28-1.0-SNAPSHOT.jar
+bash: java -jar target/herokuDB-hw29-1.0-SNAPSHOT.jar
